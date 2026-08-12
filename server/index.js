@@ -1,7 +1,19 @@
 const express = require('express')
-
-const app = express()
+const sequelize = require('./db')
 
 const PORT = process.env.PORT || 5050
 
-app.listen(PORT, () => console.log(`Server started at ${PORT}`))
+const app = express()
+
+const start = async () => {
+	try {
+		await sequelize.authenticate()
+		await sequelize.sync()
+
+		app.listen(PORT, () => console.log(`Server started at ${PORT}`))
+	} catch (e) {
+		console.log(e)
+	}
+}
+
+start()
