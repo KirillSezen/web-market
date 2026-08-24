@@ -4,7 +4,6 @@ import { DEVICE_ROUTE } from "../utils/consts"
 
 const DeviceItem = ({device}) => {
 	const navigate = useNavigate()
-	console.log(history)
 
 	return (
 		<Col className="mt-3" md={3} onClick={() => navigate(DEVICE_ROUTE + '/' + device.id)}>
