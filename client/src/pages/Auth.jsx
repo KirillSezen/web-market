@@ -1,4 +1,4 @@
-import { Container, Form, Card, Button, Row } from "react-bootstrap"
+import { Container, Form, Card, Button } from "react-bootstrap"
 import { NavLink, useLocation } from "react-router-dom"
 import { LOGIN_ROUTE, REGISTRATION_ROUTE } from "../utils/consts"
 
