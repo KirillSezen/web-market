@@ -7,7 +7,7 @@ const DeviceList = observer(() => {
 	const { device } = useContext(Context)
 
 	return (
-		<div className="d-flex flex-wrap mx-4">
+		<div className="d-flex flex-wrap mx-4"> 
 			{device.devices.map(device => 
 				<DeviceItem key={device.id} device={device}/>
 			)}

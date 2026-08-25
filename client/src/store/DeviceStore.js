@@ -2,33 +2,32 @@ import { makeAutoObservable } from "mobx"
 
 export default class DeviceStore {
 	constructor() {
-		this._types = [
-			{id: 1, name: 'холодильники'},
-			{id: 2, name: 'смартфоны'},
-			{id: 3, name: 'планшеты'},
-			{id: 4, name: 'умные часы'},
-			{id: 5, name: 'ноутбуки'}
-		]
-		this._brands = [
-			{id: 1, name: 'samsung'},
-			{id: 2, name: 'huawei'}
-		]
-		this._devices = [
-			{id: 1, name: 'poko loko', price: 2500, rating: 5, img: `somepic.jpg`},
-			{id: 2, name: 'poko phone', price: 3100, rating: 4.8, img: `somepic.jpg`},
-			{id: 3, name: 'samsa smart', price: 3500, rating: 5, img: `somepic.jpg`},
-			{id: 4, name: 'sung fong', price: 10, rating: 4.5, img: `somepic.jpg`},
-			{id: 5, name: 'beinjiling', price: 90, rating: 3.5, img: `somepic.jpg`},
-			{id: 6, name: 'redmi', price: 100, rating: 4.3, img: `somepic.jpg`}
-		]
+		this._types = []
+		this._brands = []
+		this._devices = []
 		this._selectedType = {}
 		this._selectedBrand = {}
+		this._page = 1
+		this._totalCount = 0
+		this._limit = 3
 
 		makeAutoObservable(this)
 	}
 
 	setTypes(types) {
 		this._types = types
+	}
+
+	setPage(page) {
+		this._page = page
+	}
+
+	setTotalCount(count) {
+		this._totalCount = count
+	}
+
+	setLimit(limit) {
+		this._limit = limit
 	}
 
 	setBrands(brands) {
@@ -39,14 +38,28 @@ export default class DeviceStore {
 		this._devices = devices
 	}
 	setSelectedType(type) {
+		this.setPage(1)
 		this._selectedType = type
 	}
 	setSelectedBrand(brand) {
+		this.setPage(1)
 		this._selectedBrand = brand
 	}
 
 	get types() {
 		return this._types
+	}
+
+	get page() {
+		return this._page
+	}
+
+	get totalCount() {
+		return this._totalCount
+	}
+
+	get limit() {
+		return this._limit
 	}
 
 	get brands() {
