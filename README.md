@@ -1,1 +1,1 @@
-# Simple Online-store app
+# Online-store app
